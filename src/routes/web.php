@@ -16,3 +16,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/token', function () {
+    return response()->json(
+        [
+            'token' => csrf_token(),
+        ]
+    );
+});
+
+Route::get('/rest', [\App\Http\Controllers\RestappController::class, 'index']);
+Route::post('/rest', [\App\Http\Controllers\RestappController::class, 'create']);
