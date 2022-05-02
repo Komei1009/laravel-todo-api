@@ -17,6 +17,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+/**
+ * token生成
+ */
 Route::get('/token', function () {
     return response()->json(
         [
