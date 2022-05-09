@@ -113,6 +113,8 @@
       <path value="$PROJECT_DIR$/src/vendor/laravel/sanctum" />
       <path value="$PROJECT_DIR$/src/vendor/laravel/sail" />
       <path value="$PROJECT_DIR$/src/vendor/mockery/mockery" />
+      <path value="$PROJECT_DIR$/src/vendor/laravel/socialite" />
+      <path value="$PROJECT_DIR$/src/vendor/league/oauth1-client" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.3" />

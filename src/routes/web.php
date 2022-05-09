@@ -30,3 +30,6 @@ Route::get('/token', function () {
 
 Route::get('/rest', [\App\Http\Controllers\RestappController::class, 'index']);
 Route::post('/rest', [\App\Http\Controllers\RestappController::class, 'create']);
+
+Route::get('/auth/redirect', [\App\Http\Controllers\GoogleLoginController::class, 'getGoogleAuth']);
+Route::get('/login/callback', [\App\Http\Controllers\GoogleLoginController::class, 'authGoogleCallback']);
