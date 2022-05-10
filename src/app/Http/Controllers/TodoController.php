@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Todo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use function Psy\debug;
 
@@ -14,10 +15,21 @@ class TodoController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function index()
+    public function index(Request $request)
     {
+        $exist = Todo::where('user_id', $request->user()->id)
+            ->exists();
+        if (!$exist) {
+            return response()->json(
+                [
+                    'data' => 'not found'
+                ], 404
+            );
+        }
+
         return response()->json(
-            Todo::all()
+            Todo::where('user_id', $request->user()->id)
+                ->get()
         );
     }
 
@@ -27,10 +39,22 @@ class TodoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
+        $exist = Todo::where('id', $id)
+            ->where('user_id', $request->user()->id)
+            ->exists();
+        if (!$exist) {
+            return response()->json(
+                [
+                    'data' => 'not found'
+                ], 404
+            );
+        }
         return response()->json(
-            Todo::findOrFail($id)
+            Todo::where('id', $id)
+                ->where('user_id', $request->user()->id)
+                ->first()
         );
     }
 
@@ -42,7 +66,7 @@ class TodoController extends Controller
     public function store(Request $request)
     {
         $todo = Todo::create([
-            'user_id' => $request->input('user_id'),
+            'user_id' => $request->user()->id,
             'task' => $request->input('task'),
             'detail' => $request->input('detail'),
             'label' => $request->input('label'),
@@ -69,7 +93,6 @@ class TodoController extends Controller
         ];
 
         $message = [
-            'user_id.required' => 'ユーザーIDを入力してください',
             'task.required' => 'タスクを入力してください',
             'status.between' => 'ステータスを入力してください',
             'status.integer' => 'ステータスを数字で入力してください',

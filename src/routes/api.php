@@ -18,11 +18,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('users', \App\Http\Controllers\UserController::class)->only([
-    'index', 'store', 'show', 'update', 'destroy'
+Route::middleware('auth:sanctum')->resource('users', \App\Http\Controllers\UserController::class)->only([
+    'index', 'show', 'destroy'
 ]);
 
-Route::resource('todos', \App\Http\Controllers\TodoController::class)->only([
+Route::middleware('auth:sanctum')->resource('todos', \App\Http\Controllers\TodoController::class)->only([
     'index', 'store', 'show', 'update', 'destroy'
 ]);
-

@@ -113,6 +113,9 @@
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/laravel/sanctum" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/laravel/sail" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/mockery/mockery" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/maximebf/debugbar" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/barryvdh/laravel-debugbar" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/debug" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

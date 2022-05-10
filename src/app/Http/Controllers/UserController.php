@@ -82,9 +82,4 @@ class UserController extends Controller
 
         return response()->json();
     }
-
-    public function me(Request $request)
-    {
-        return $request->user();
-    }
 }

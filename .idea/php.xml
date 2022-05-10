@@ -115,7 +115,15 @@
       <path value="$PROJECT_DIR$/src/vendor/mockery/mockery" />
       <path value="$PROJECT_DIR$/src/vendor/laravel/socialite" />
       <path value="$PROJECT_DIR$/src/vendor/league/oauth1-client" />
+      <path value="$PROJECT_DIR$/src/vendor/maximebf/debugbar" />
+      <path value="$PROJECT_DIR$/src/vendor/barryvdh/laravel-debugbar" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/debug" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.3" />
+  <component name="PhpUnit">
+    <phpunit_settings>
+      <PhpUnitSettings custom_loader_path="$PROJECT_DIR$/src/vendor/autoload.php" />
+    </phpunit_settings>
+  </component>
 </project>

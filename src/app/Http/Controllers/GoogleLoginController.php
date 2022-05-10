@@ -28,8 +28,8 @@ class GoogleLoginController extends Controller
             'google_id' => $googleUser->getId()
         ]);
 
-        Auth::login($user, true);
-        dd($user->createToken('auth_token')->plainTextToken);
+        Auth::login($user);
+
         return response()->json([
             'access_token' => $user->createToken('auth_token')->plainTextToken
         ]);
