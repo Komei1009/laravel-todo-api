@@ -31,7 +31,7 @@ class RestappController extends Controller
     {
         return response()->json(
             [
-                'test' => 'sample',
+                'test1' => 'sample1',
             ]
         );
     }
