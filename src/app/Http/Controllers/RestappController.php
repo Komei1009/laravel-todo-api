@@ -16,7 +16,7 @@ class RestappController extends Controller
     {
         return response()->json(
             [
-                'Good morning' => 'おはよう',
+                'Good morning1' => 'おはよう',
                 'Hello' => 'こんにちは',
             ]
         );
