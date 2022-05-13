@@ -1,6 +1,6 @@
 #!/bin/bash
 # systemctl restart nginx
 
-docker-compose -p laravel-todo -f /home/ec2-user/laravel-todo/docker-compose.yml down
-
-docker-compose -p laravel-todo -f /home/ec2-user/laravel-todo/docker-compose.yml up -d
+#docker-compose -p laravel-todo -f /home/ec2-user/laravel-todo/docker-compose.yml down
+#
+#docker-compose -p laravel-todo -f /home/ec2-user/laravel-todo/docker-compose.yml up -d
