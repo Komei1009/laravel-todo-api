@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /var/www/laravel-todo-api
+    destination: /home/ec2-user/laravel-todo-api
 hooks:
   BeforeInstall:
     - location: scripts/install_dependencies
