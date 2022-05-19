@@ -1,0 +1,15 @@
+includes:
+    - ./vendor/nunomaduro/larastan/extension.neon
+
+parameters:
+    paths:
+        - app
+        - tests
+    level: 9
+    ignoreErrors:
+        # Mockery の型定義がおかしいので除外する
+        -
+            message: '#Call to an undefined method Mockery\\ExpectationInterface\|Mockery\\HigherOrderMessage::.+\(\)#'
+            path: tests/Unit/*
+    excludePaths:
+    checkMissingIterableValueType: true

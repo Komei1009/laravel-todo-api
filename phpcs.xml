@@ -1,0 +1,180 @@
+<?xml version="1.0"?>
+<ruleset name="Repo API ruleset">
+    <!-- 基準のパス -->
+    <arg name="basepath" value="."/>
+    <!-- 色付きで出力する -->
+    <arg name="colors"/>
+    <!-- 同時実行する数 -->
+    <arg name="parallel" value="8"/>
+    <!-- 進捗を表示する -->
+    <arg value="p"/>
+
+    <!-- 拡張プラグインのインストール -->
+    <config name="installed_paths" value="vendor/slevomat/coding-standard"/>
+
+    <!-- 実行するパス -->
+    <file>.</file>
+
+    <!-- 検査しないパス -->
+    <exclude-pattern>./vendor/*</exclude-pattern>
+    <exclude-pattern>./bootstrap/cache/*</exclude-pattern>
+    <exclude-pattern>./storage/*</exclude-pattern>
+    <exclude-pattern>./.idea/*</exclude-pattern>
+    <exclude-pattern>*/*.blade.php</exclude-pattern>
+
+    <!-- PSR 関連 -->
+
+    <!-- PSR-12 に則っているか -->
+    <rule ref="PSR12"/>
+    <!-- エンドポイントは副作用を起こすことを許容する -->
+    <rule ref="PSR1.Files.SideEffects">
+        <exclude-pattern>./public/index.php</exclude-pattern>
+    </rule>
+
+    <!-- スペース関連 -->
+
+    <!-- 空配列はスペース空けない -->
+    <rule ref="Squiz.Arrays.ArrayDeclaration.SpaceInEmptyArray"/>
+    <!-- キャストのあとにスペースは入れない -->
+    <rule ref="Generic.Formatting.NoSpaceAfterCast"/>
+    <!-- 制御構造の後ろにスペース -->
+    <rule ref="Generic.WhiteSpace.LanguageConstructSpacing.inCorrect"/>
+    <!-- 関数・メソッドの前後は1行空ける -->
+    <rule ref="Squiz.WhiteSpace.FunctionSpacing">
+        <properties>
+            <property name="spacing" value="1"/>
+            <!-- 最初の関数・メソッドの前は空けない -->
+            <property name="spacingBeforeFirst" value="0"/>
+            <!-- 最後の関数・メソッドの後は空けない -->
+            <property name="spacingAfterLast" value="0"/>
+        </properties>
+    </rule>
+
+    <!-- 配列関連 -->
+
+    <!-- array() を使わない -->
+    <rule ref="Generic.Arrays.DisallowLongArraySyntax"/>
+    <!-- list() を使わない -->
+    <rule ref="SlevomatCodingStandard.PHP.ShortList"/>
+    <!-- 配列の最終行にもカンマを入れる -->
+    <rule ref="Squiz.Arrays.ArrayDeclaration.NoComma"/>
+    <!-- 配列のインデントを揃える -->
+    <rule ref="Generic.Arrays.ArrayIndent"/>
+
+    <!-- 文字列関連 -->
+
+    <!-- 文字列は可能な限りシングルクォートにする -->
+    <rule ref="Squiz.Strings.DoubleQuoteUsage.NotRequired"/>
+    <!-- 無駄に文字列連結をしない -->
+    <rule ref="Generic.Strings.UnnecessaryStringConcat"/>
+    <!-- ::class でクラス名を取得する -->
+    <rule ref="SlevomatCodingStandard.Classes.ModernClassNameReference"/>
+
+    <!-- コメント関連 -->
+
+    <!-- クラスの DocComment 必須 -->
+    <rule ref="Squiz.Commenting.ClassComment">
+        <!-- どこでも好きなタグを使えるようにする -->
+        <exclude name="Squiz.Commenting.ClassComment.TagNotAllowed"/>
+    </rule>
+    <!-- 関数・メソッドの DocComment 必須 -->
+    <rule ref="Squiz.Commenting.FunctionComment">
+        <!-- パラメータの説明は任意 -->
+        <exclude name="Squiz.Commenting.FunctionComment.MissingParamComment"/>
+        <!-- パラメータが複数並んだ時に整列させない -->
+        <exclude name="Squiz.Commenting.FunctionComment.SpacingAfterParamType"/>
+        <!-- DocTag にタイプの指定があっても、型宣言を必須としない。継承元のクラスで型宣言されないケースがあるため。 -->
+        <exclude name="Squiz.Commenting.FunctionComment.TypeHintMissing"/>
+        <!-- パラメータの説明の最後は . で終わらなくて良い -->
+        <exclude name="Squiz.Commenting.FunctionComment.ParamCommentFullStop"/>
+        <!-- パラメータの説明の先頭は大文字で始まらなくても良い -->
+        <exclude name="Squiz.Commenting.FunctionComment.ParamCommentNotCapital"/>
+        <!-- 例外の説明の最後は . で終わらなくて良い -->
+        <exclude name="Squiz.Commenting.FunctionComment.ThrowsNoFullStop"/>
+        <!-- 例外の説明の先頭は大文字で始まらなくても良い -->
+        <exclude name="Squiz.Commenting.FunctionComment.ThrowsNotCapital"/>
+    </rule>
+
+    <!-- 命名関連 -->
+
+    <!-- 変数はキャメルケースにする -->
+    <rule ref="Squiz.NamingConventions.ValidVariableName.NotCamelCaps"/>
+    <!-- プロパティはキャメルケースにする -->
+    <rule ref="Squiz.NamingConventions.ValidVariableName.MemberNotCamelCaps">
+        <!-- モデル内はDBの関係上でスネークケースになるので除外する -->
+        <exclude-pattern>./app/Models/*</exclude-pattern>
+        <!-- リソース内はDBの関係上でスネークケースになるので除外する -->
+        <exclude-pattern>./app/Http/Resources/*</exclude-pattern>
+    </rule>
+    <!-- public プロパティの先頭に _ を付けない -->
+    <rule ref="Squiz.NamingConventions.ValidVariableName.PublicHasUnderscore"/>
+
+    <!-- 演算子関連 -->
+
+    <!-- == を使わないようにする -->
+    <rule ref="SlevomatCodingStandard.Operators.DisallowEqualOperators"/>
+    <!-- Null 合体演算子を使用する -->
+    <rule ref="SlevomatCodingStandard.ControlStructures.RequireNullCoalesceOperator"/>
+    <!-- Null 合体代入演算子を使用する -->
+    <rule ref="SlevomatCodingStandard.ControlStructures.RequireNullCoalesceEqualOperator"/>
+    <!-- Yoda 記法は使わないようにする -->
+    <rule ref="SlevomatCodingStandard.ControlStructures.DisallowYodaComparison"/>
+    <!-- 不要な () を書かない -->
+    <rule ref="SlevomatCodingStandard.PHP.UselessParentheses"/>
+
+    <!-- オートロード関連 -->
+
+    <!-- 使ってない use を消す -->
+    <rule ref="SlevomatCodingStandard.Namespaces.UnusedUses"/>
+    <!-- 同じ名前空間からは use しない -->
+    <rule ref="SlevomatCodingStandard.Namespaces.UseFromSameNamespace"/>
+    <!-- use を ABC 順でソートする. -->
+    <rule ref="SlevomatCodingStandard.Namespaces.AlphabeticallySortedUses"/>
+
+    <!-- 型関連 -->
+
+    <!-- declare(strict_types=1) を必ず書く -->
+    <rule ref="SlevomatCodingStandard.TypeHints.DeclareStrictTypes">
+        <!-- declare(strict_types=1) の前後に空行を1行挟む -->
+        <properties>
+            <property
+                name="newlinesCountBetweenOpenTagAndDeclare"
+                value="2"
+            />
+            <property
+                name="newlinesCountAfterDeclare"
+                value="2"
+            />
+            <property
+                name="spacesCountAroundEqualsSign"
+                value="0"
+            />
+        </properties>
+    </rule>
+    <!--返り値の型宣言を必須にする -->
+    <rule ref="SlevomatCodingStandard.TypeHints.ReturnTypeHint.MissingNativeTypeHint"/>
+    <!--プロパティの型宣言を必須にする -->
+    <rule ref="SlevomatCodingStandard.TypeHints.PropertyTypeHint.MissingAnyTypeHint"/>
+    <!--引数の型宣言を必須にする -->
+    <rule ref="SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingAnyTypeHint"/>
+
+    <!-- その他 -->
+
+    <!-- 使用不可の関数を指定 -->
+    <rule ref="Generic.PHP.ForbiddenFunctions">
+        <properties>
+            <property
+                name="forbiddenFunctions"
+                type="array"
+                value="create_function=>null,echo=>null,env=>config,eval=>null,delete=>unset,dd=>null,die=>null,optional=>null,print=>null,print_r=>null,sizeof=>count,var_dump=>null"
+            />
+        </properties>
+        <exclude-pattern>config/*</exclude-pattern>
+    </rule>
+    <!-- 到達不能コードを書かない -->
+    <rule ref="Squiz.PHP.NonExecutableCode"/>
+    <!-- コンストラクタプロモーションを使うようにする -->
+    <rule ref="SlevomatCodingStandard.Classes.RequireConstructorPropertyPromotion"/>
+    <!-- アロー関数を使うようにする -->
+    <rule ref="SlevomatCodingStandard.Functions.RequireArrowFunction"/>
+</ruleset>

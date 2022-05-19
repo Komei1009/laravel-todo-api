@@ -1,3 +1,4 @@
 FROM mysql:8.0
 
-COPY ./docker/db/my.conf /etc/my.conf
+COPY my.cnf /etc/mysql/conf.d/app.cnf
+RUN chmod 644 /etc/mysql/conf.d/app.cnf

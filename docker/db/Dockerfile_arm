@@ -1,0 +1,3 @@
+FROM arm64v8/mysql:8.0-oracle
+
+COPY my.cnf /etc/mysql/conf.d/app.cnf
