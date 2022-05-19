@@ -2,14 +2,14 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /home/ec2-user/laravel-todo-api
+    destination: /var/www/app
 hooks:
   AfterInstall:
     - location: scripts/preparation.sh
       runas: root
 
 permissions:
-  - object: /home/ec2-user/laravel-todo-api/scripts
+  - object: /var/www/app/scripts
     pattern: "**"
     owner: ec2-user
     group: nginx

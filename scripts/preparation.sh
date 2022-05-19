@@ -1,15 +1,15 @@
 #!/bin/bash
-find /home/ec2-user/laravel-todo-api -type f -exec chmod 664 {} \;
-find /home/ec2-user/laravel-todo-api -type d -exec chmod 774 {} \;
-chown -R ec2-user:nginx /home/ec2-user/laravel-todo-api
+find /var/www/app -type f -exec chmod 664 {} \;
+find /var/www/app -type d -exec chmod 774 {} \;
+chown -R ec2-user:nginx /var/www/app
 
-chmod -R 775 /home/ec2-user/laravel-todo-api/src/storage
-chmod -R 775 /home/ec2-user/laravel-todo-api/src/bootstrap/cache
+chmod -R 775 /var/www/app/src/storage
+chmod -R 775 /var/www/app/src/bootstrap/cache
 
 # db migrate
-cd /home/ec2-user/laravel-todo-api/src/app
+cd /var/www/app
 php artisan migrate
 
 # composer
- cd /home/ec2-user/laravel-todo-api/src/app
- composer install
+# cd /var/www/app
+# composer install
