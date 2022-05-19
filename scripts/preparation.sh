@@ -7,9 +7,11 @@ chmod -R 775 /var/www/app/storage
 chmod -R 775 /var/www/app/bootstrap/cache
 
 # db migrate
+ # shellcheck disable=SC2164
  cd /var/www/app
  php artisan migrate
 
 # composer
+ # shellcheck disable=SC2164
  cd /var/www/app
  composer install
