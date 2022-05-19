@@ -9,7 +9,7 @@ hooks:
       runas: root
 
 permissions:
-  - object: /var/www/app/scripts
+  - object: /home/ec2-user/laravel-todo-api/scripts
     pattern: "**"
     owner: ec2-user
     group: nginx
