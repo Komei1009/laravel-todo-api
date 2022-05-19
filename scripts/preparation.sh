@@ -7,9 +7,9 @@ chmod -R 775 /var/www/app/src/storage
 chmod -R 775 /var/www/app/src/bootstrap/cache
 
 # db migrate
-# cd /var/www/app
-# php artisan migrate
+ cd /var/www/app/src
+ php artisan migrate
 
 # composer
-# cd /var/www/app
-# composer install
+ cd /var/www/app/src
+ composer install
