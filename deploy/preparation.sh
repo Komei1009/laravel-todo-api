@@ -13,4 +13,5 @@ chown -R ec2-user:nginx /var/www/app
 #
 ## composer
 # # shellcheck disable=SC2164
- sudo -u nginx composer install --force
+ cd /var/www/app
+ composer install
