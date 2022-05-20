@@ -9,7 +9,7 @@ hooks:
       runas: root
 
 permissions:
-  - object: /var/www/app/scripts
+  - object: /var/www/app/deploy
     pattern: "**"
     owner: ec2-user
     group: nginx
