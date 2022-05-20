@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('health', fn(): string => '');
 
 Route::middleware(['auth.basic'])->group(function (): void {
-    Route::get('ping', fn(): JsonResponse => response()->json(['pong']));
+    Route::get('ping', fn(): JsonResponse => response()->json(['pong2']));
     Route::post('weekly-reports', WeeklyReport\StoreController::class)
         ->name('weekly-reports.store');
 });
