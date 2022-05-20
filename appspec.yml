@@ -5,11 +5,11 @@ files:
     destination: /var/www/app
 hooks:
   AfterInstall:
-    - location: deploy/preparation.sh
+    - location: scripts/preparation.sh
       runas: root
 
 permissions:
-  - object: /var/www/app/deploy
+  - object: /var/www/app/scripts
     pattern: "**"
     owner: ec2-user
     group: nginx
