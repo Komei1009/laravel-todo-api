@@ -12,6 +12,5 @@ chown -R ec2-user:nginx /var/www/app
  sudo -u nginx php artisan migrate --force
 #
 ## composer
-# # shellcheck disable=SC2164
- cd /var/www/app
- composer install
+# shellcheck disable=SC2164
+ sudo composer install
