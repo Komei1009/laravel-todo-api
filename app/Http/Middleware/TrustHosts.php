@@ -1,14 +1,9 @@
 <?php
 
-declare(strict_types=1);
-
 namespace App\Http\Middleware;
 
 use Illuminate\Http\Middleware\TrustHosts as Middleware;
 
-/**
- * 信頼できるホストを管理するミドルウェア
- */
 class TrustHosts extends Middleware
 {
     /**
@@ -16,7 +11,7 @@ class TrustHosts extends Middleware
      *
      * @return array<int, string|null>
      */
-    public function hosts(): array
+    public function hosts()
     {
         return [
             $this->allSubdomainsOfApplicationUrl(),

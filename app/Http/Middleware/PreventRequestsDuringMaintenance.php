@@ -1,14 +1,9 @@
 <?php
 
-declare(strict_types=1);
-
 namespace App\Http\Middleware;
 
 use Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance as Middleware;
 
-/**
- * メンテナンスモードの表示を制御するミドルウェア
- */
 class PreventRequestsDuringMaintenance extends Middleware
 {
     /**

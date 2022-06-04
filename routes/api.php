@@ -1,9 +1,6 @@
 <?php
 
-declare(strict_types=1);
-
-use App\Http\Controllers\WeeklyReport;
-use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,10 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('health', fn(): string => '');
-
-Route::middleware(['auth.basic'])->group(function (): void {
-    Route::get('ping', fn(): JsonResponse => response()->json(['pong']));
-    Route::post('weekly-reports', WeeklyReport\StoreController::class)
-        ->name('weekly-reports.store');
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
 });
+
+Route::middleware('auth:sanctum')->resource('users', \App\Http\Controllers\UserController::class)->only([
+    'index', 'show', 'destroy'
+]);
+
+Route::middleware('auth:sanctum')->resource('todos', \App\Http\Controllers\TodoController::class)->only([
+    'index', 'store', 'show', 'update', 'destroy'
+]);

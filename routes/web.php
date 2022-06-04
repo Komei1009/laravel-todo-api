@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,3 +12,24 @@ declare(strict_types=1);
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+/**
+ * token生成
+ */
+Route::get('/token', function () {
+    return response()->json(
+        [
+            'token' => csrf_token(),
+        ]
+    );
+});
+
+Route::get('/rest', [\App\Http\Controllers\RestappController::class, 'index']);
+Route::post('/rest', [\App\Http\Controllers\RestappController::class, 'create']);
+
+Route::get('/auth/redirect', [\App\Http\Controllers\GoogleLoginController::class, 'getGoogleAuth']);
+Route::get('/login/callback', [\App\Http\Controllers\GoogleLoginController::class, 'authGoogleCallback']);

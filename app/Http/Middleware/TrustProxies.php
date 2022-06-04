@@ -1,15 +1,10 @@
 <?php
 
-declare(strict_types=1);
-
 namespace App\Http\Middleware;
 
 use Illuminate\Http\Middleware\TrustProxies as Middleware;
 use Illuminate\Http\Request;
 
-/**
- * 信頼できるプロキシを管理するミドルウェア
- */
 class TrustProxies extends Middleware
 {
     /**
@@ -17,7 +12,7 @@ class TrustProxies extends Middleware
      *
      * @var array<int, string>|string|null
      */
-    protected $proxies = null;
+    protected $proxies;
 
     /**
      * The headers that should be used to detect proxies.
